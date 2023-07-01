@@ -1,4 +1,4 @@
-# 20-Day JavaScript Learning Journey - My Personal Challenge
+# Mastering JavaScript in 20 Days - My Personal Challenge
 
 Welcome to my 20-Day JavaScript Learning Challenge! 🚀
 
