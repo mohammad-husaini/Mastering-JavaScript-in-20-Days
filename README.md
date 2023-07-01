@@ -36,6 +36,6 @@ To make the most of this challenge, I will follow these guidelines:
 ## Folder Structure
 To keep my learning materials organized, I will follow the folder structure provided in this repository. Each day will have its own markdown file, where I will document what I've learned and share my code snippets.
 
-- [**Day 1**](https://github.com/mohammad-husaini/JavaScriptLearningSprint/blob/main/Day1.md)
+- [**Day 1**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day1.md)
 
 I'm excited to embark on this learning adventure and level up my JavaScript skills! Let's make the most of these 20 days. Happy coding! 🎉
