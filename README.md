@@ -17,8 +17,6 @@ To make the most of this challenge, I will be following these recommended online
 ## Daily Coding Challenges
 Every day, I will be provided with a JavaScript coding challenge by the GSG team. I will test my skills and apply my knowledge to solve these challenges. Let's have fun while sharpening our coding abilities! 💪
 
-[First Challenge]()
-
 ## Daily Learning Process
 1. I will allocate 90 minutes each day to watch the assigned courses mentioned above.
 2. I will solve the daily JavaScript coding challenges provided by the GSG team.
