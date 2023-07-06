@@ -1,7 +1,7 @@
 # Day 3: Quiz Project and Functions 
 This README file summarizes the JavaScript lessons on the Quiz Project and Functions. In this section, we will explore how to build a quiz project using JavaScript and learn about functions in JavaScript.
 
-## Quiz Project
+## Lesson 1: Quiz Project
 
 In this session, we focused on the Quiz Project. Here's a summary of what we covered:
 
@@ -11,7 +11,7 @@ In this session, we focused on the Quiz Project. Here's a summary of what we cov
 
 - **Declaring and Assigning Variables**: In the second part of the exercise, we declared and assigned a variable called `fact`. This variable was a constant object containing properties such as `fact`, `answer`, and `explanation`. We learned how to set the text of the `statement` element to the fact statement.
 
-## Function
+## Lesson 2: Function
 
 In this session, we dived into functions within the Quiz Project. Here's a summary of what we covered:
 
@@ -47,7 +47,7 @@ In this session, we dived into functions within the Quiz Project. Here's a summa
     return "Hello";
   };
   ```
-## Scope and Differences Between `let` and `var`
+## Lesson 3: Scope and Differences Between `let` and `var`
 
 JavaScript has the concept of variable scope, which determines the accessibility and lifetime of variables. There are two main types of scope in JavaScript: global scope and local scope. 
 
