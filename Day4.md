@@ -216,20 +216,47 @@ In this lesson, we introduce a fun project: the Doggos Quiz Game. Here's a summa
 
 #### My Solution
 ```javascript
+function checkSign(num) {
+return num===0?"zero":num>0?"positive":"negative";
+}
 
+checkSign(10);
 ```
 
 ### [Golf Code](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/golf-code)
 
 #### My Solution
 ```javascript
+const names = ["Hole-in-one!", "Eagle", "Birdie", "Par", "Bogey", "Double Bogey", "Go Home!"];
 
+function golfScore(par, strokes) {
+  // Only change code below this line
+
+
+  return strokes===1?names[0]:strokes<=par-2?names[1]:strokes===par-1?names[2]:strokes===par?names[3]:strokes===par+1?names[4]:strokes===par+2?names[5]:"Go Home!";
+  // Only change code above this line
+}
+
+golfScore(5, 4);
 ```
 
 ### [Use the map Method to Extract Data from an Array](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-map-method-to-extract-data-from-an-array)
 
 #### My Solution
 ```javascript
+// Only change code below this line
+
+const ratings = watchList.map((movie) => {
+  return {
+    title: movie.Title,
+    rating: movie.imdbRating,
+  };
+});
+
+
+// Only change code above this line
+
+console.log(JSON.stringify(ratings));
 
 ```
 
@@ -237,5 +264,14 @@ In this lesson, we introduce a fun project: the Doggos Quiz Game. Here's a summa
 
 #### My Solution
 ```javascript
-
+// Only change code below this line
+const notFilteredList = watchList.map((movie) => {
+  return {
+    title: movie.Title,
+    rating: movie.imdbRating,
+  };
+});
+const filteredList = notFilteredList
+.filter(e=>e.rating > 8)
+// Only change code above this line
 ```
