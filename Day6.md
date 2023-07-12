@@ -95,5 +95,28 @@ urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
 ```javascript
 Question 1: Functions and Callbacks
 
+function mapAsync(arr, callback) {
+  return new Promise((resolve, reject) => {
+    resolve(arr.map((e) => callback(e)));
+    reject((error) => console.log(error));
+  });
+}
+
+
+Question 2: Call Stack and Recursion
+
+const sumRange = (start, end) => {
+  if (start === end) {
+    return start;
+  }
+  if (start > end) {
+    return console.log("Error");
+  } else {
+  }
+  {
+    return start + sumRange(start + 1, end);
+  }
+};
+console.log(sumRange(3, 7)); // Output: 25
 
 ```
