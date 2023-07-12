@@ -50,6 +50,54 @@ anotherFunction(); // Output: 2
 ```javascript
 Question 1:
 
+const createCounter = (start) => {
+  let counter = start;
+  const incrementCounter = () => counter++;
+  return incrementCounter;
+};
+const incCounter = createCounter(3);
 
+console.log(incCounter()); // Output: 3
+console.log(incCounter()); // Output: 4
+console.log(incCounter()); // Output: 5
+console.log(incCounter()); // Output: 6
+
+Question 2:
+
+const calculateAverage = (arr) => {
+  const average = () => arr.reduce((a, b) => a + b) / arr.length;
+  return average;
+};
+const arrAvg = calculateAverage([3, 8, 13]);
+console.log(arrAvg()); //Output : 8
+
+Question 3:
+
+const powerOf = (base) => {
+  let power = null;
+  const pow = (exp) => (power = Math.pow(base, exp));
+  return pow;
+};
+const powerOfNumber = powerOf(2);
+console.log(powerOfNumber(5)); //Output : 32
+
+Question 4:
+
+function compose(...functions) {
+  const functionsRevers = (functionResult) => {
+    let result = functionResult;
+    for (let i = functions.length - 1; i >= 0; i--) {
+      result = functions[i](result);
+    }
+    return result;
+  };
+
+  return functionsRevers;
+}
+const addX = (x) => x + 1;
+const minX = (x) => x - 3;
+const multiY = (x) => x * 2;
+const functionReverseOrder = compose(addX, minX, multiY);
+console.log(functionReverseOrder(5)); //output : 8
 
 ```
