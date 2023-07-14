@@ -2,124 +2,174 @@
 
 This README file summarizes the JavaScript lesson on Classes & Prototypes covered in Day 9 of the course.
 
-## Lesson: Classes & Prototypes
+## Lesson : Classes & Prototypes
 
-In this lesson, we delve into the important concepts of classes and prototypes in JavaScript. Here are the key points covered in this lesson:
+In this lesson, we will delve into the important concepts of classes and prototypes in JavaScript. We'll explore how they are used to create and organize objects and methods. Here's a breakdown of the topics covered:
 
-1. Introduction to classes and their significance: Classes are essential for structuring code in a way that is easy to reason about, maintain, and extend. Object-oriented programming is introduced as a powerful approach to achieving these goals.
+1. Introduction to Object-Oriented Programming:
+   - Understanding the significance of object-oriented programming (OOP) as a popular paradigm for structuring complex code.
+   - Exploring the benefits of OOP, including code organization, ease of adding new functionality, and code efficiency.
+   
+   Example:
+   ```javascript
+   class Animal {
+     constructor(name) {
+       this.name = name;
+     }
+     
+     speak() {
+       console.log(`${this.name} makes a sound.`);
+     }
+   }
+   
+   const dog = new Animal('Dog');
+   dog.speak(); // Output: Dog makes a sound.
+   ```
 
-2. Storing data and functionality together: The concept of storing data and functions together in one place is introduced. Dot notation is explained as a means to assign and access elements in an object, including functions.
+2. Storing Data and Functionality Together:
+   - Making the case for storing data and functionality together in one place for better organization and maintainability.
+   - Introducing dot notation as a way to assign and access properties, including functions, within an object.
+   
+   Example:
+   ```javascript
+   const person = {
+     name: 'John',
+     age: 30,
+     greet: function() {
+       console.log(`Hello, my name is ${this.name}.`);
+     }
+   };
+   
+   person.greet(); // Output: Hello, my name is John.
+   ```
 
-3. Object creation with Object.create(): The built-in function `Object.create()` is introduced as a way to create objects with more control. The concept of a generalized function to produce objects is presented.
+3. Creating Objects with Object.create():
+   - Introducing the `Object.create()` method as a way to create objects that provide more control and customization.
+   - Understanding the concept of a generalized function that produces objects.
+   
+   Example:
+   ```javascript
+   const personPrototype = {
+     greet: function() {
+       console.log(`Hello, my name is ${this.name}.`);
+     }
+   };
+   
+   const person = Object.create(personPrototype);
+   person.name = 'John';
+   person.greet(); // Output: Hello, my name is John.
+   ```
 
-4. Understanding the prototype chain: The `__proto__` property is introduced as a way to access functions set when using `Object.create()` to instantiate an object. The prototype chain is explained as the mechanism for linking objects to their prototypes.
+4. The Prototype Chain and __proto__:
+   - Exploring the prototype chain and the `__proto__` property as a mechanism to access functions defined when using `Object.create()`.
+   
+   Example:
+   ```javascript
+   const parent = {
+     greet: function() {
+       console.log(`Hello, I'm the parent.`);
+     }
+   };
+   
+   const child = Object.create(parent);
+   child.greet(); // Output: Hello, I'm the parent.
+   ```
 
-5. Factory functions and prototypal links: Factory functions that utilize `Object.create()` with a function argument to create objects with prototypal links to the desired functionality are demonstrated.
+5. Factory Functions and Prototypal Inheritance:
+   - Demonstrating how factory functions can utilize `Object.create()` to create objects with a prototypal link to shared functionality.
+   - Understanding how objects created with factory functions share methods but have their own data.
+   
+   Example:
+   ```javascript
+   const animalFactory = (name) => {
+     const animal = Object.create(animalFactory.prototype);
+     animal.name = name;
+     return animal;
+   };
+   
+   animalFactory.prototype.speak = function() {
+     console.log(`${this.name} makes a sound.`);
+   };
+   
+   const dog = animalFactory('Dog');
+   dog.speak(); // Output: Dog makes a sound.
+   ```
 
-6. Clarifying property storage with hasOwnProperty(): The `hasOwnProperty` method is introduced to determine whether an object has a specific property, clarifying where properties are stored.
+6. The "this" Keyword and Execution Context:
+   - Addressing the behavior of the "this" keyword when used within nested functions or different contexts.
+   - Introducing the `call()` and `apply()` methods as ways to explicitly control the value of "this".
+   
+   Example:
+   ```javascript
+   const person = {
+     name: 'John',
+     greet: function() {
+       console.log(`Hello, my name is ${this.name}.`);
+     }
+   };
+   
+   const anotherPerson = {
+     name: 'Jane'
+   };
+   
+   person.greet.call(anotherPerson); // Output: Hello, my name is Jane.
+   ```
 
-7. Exploring the behavior of `this`: The behavior of `this` in nested functions is explored, and the `call` and `apply` methods are introduced as a means to control the assignment of `this`. The impact of arrow functions on `this` is also discussed.
+7. Arrow Functions and "this" Binding:
+   - Understanding how arrow functions override the normal "this" binding rules due to their lexical scoping nature.
+   - Discussing the implications of using arrow functions as methods and their interaction with the "this" keyword.
+   
+   Example:
+   ```javascript
+   const person = {
+     name: 'John',
+     greet: () => {
+       console.log(`Hello, my name is ${this.name}.`);
+     }
+   };
+   
+   person.greet(); // Output: Hello, my name is undefined.
+   ```
 
-8. Introduction to the `new` keyword and object instantiation: The `new` keyword is introduced as a way to automate the process of object instantiation. The inner workings of the `new` keyword are demonstrated, highlighting its use in accessing the prototype object.
+8. The "new" Keyword and Constructor Functions:
+   - Introducing the "new" keyword and its role in automating object creation and method assignment.
+   - Understanding the process behind the scenes when using the "new" keyword to instantiate objects.
+   
+   Example:
+   ```javascript
+   function Person(name) {
+     this.name = name;
+   }
+   
+   Person.prototype.greet = function() {
+     console.log(`Hello, my name is ${this.name}.`);
+   };
+   
+   const john = new Person('John');
+   john.greet(); // Output: Hello, my name is John.
+   ```
 
-9. Syntactic sugar with classes: The `class` keyword is introduced as a syntactic sugar for prototypal inheritance. The benefits and potential issues of using the `class` keyword are discussed.
+9. The Syntactic Sugar of Classes:
+   - Exploring the syntactic sugar of the "class" keyword, which simplifies the creation of constructor functions and method assignments.
+   - Understanding that classes are just a more readable way of working with prototypes.
+   
+   Example:
+   ```javascript
+   class Person {
+     constructor(name) {
+       this.name = name;
+     }
+     
+     greet() {
+       console.log(`Hello, my name is ${this.name}.`);
+     }
+   }
+   
+   const john = new Person('John');
+   john.greet(); // Output: Hello, my name is John.
+   ```
 
-The lesson on Classes & Prototypes provides a comprehensive understanding of object-oriented programming in JavaScript, enabling developers to structure their code effectively and leverage the power of classes and prototypes in their applications.
 
-## Code Examples
-
-Here are some code examples covered in the lesson:
-
-1. Storing data and functionality in an object:
-```javascript
-const user1 = {
-  name: "Will",
-  score: 3,
-  increment: function() {
-    user1.score++;
-  }
-};
-
-user1.increment(); // user1.score -> 4
-```
-
-2. Creating objects using a function:
-```javascript
-function userCreator(name, score) {
-  const newUser = {};
-  newUser.name = name;
-  newUser.score = score;
-  newUser.increment = function() {
-    newUser.score++;
-  };
-  return newUser;
-}
-
-const user1 = userCreator("Will", 3);
-const user2 = userCreator("Tim", 5);
-
-user1.increment();
-```
-
-3. Creating objects using the prototype chain:
-```javascript
-function userCreator(name, score) {
-  const newUser = Object.create(userFunctionStore);
-  newUser.name = name;
-  newUser.score = score;
-  return newUser;
-}
-
-const userFunctionStore = {
-  increment: function() {
-    this.score++;
-  },
-  login: function() {
-    console.log("Logged in");
-  }
-};
-
-const user1 = userCreator("Will", 3);
-const user2 = userCreator("Tim", 5);
-
-user1.increment();
-```
-
-4. Creating objects using the `new` keyword:
-```javascript
-function UserCreator(name, score) {
-  this.name = name;
-  this.score = score;
-}
-
-UserCreator.prototype.increment = function() {
-  this.score++;
-};
-
-const user1 = new UserCreator("Will", 3);
-user1.increment();
-```
-
-5. Using classes for object creation:
-```javascript
-class UserCreator {
-  constructor(name, score) {
-    this.name = name;
-    this.score = score;
-  }
-  
-  increment() {
-    this.score++;
-  }
-  
-  login() {
-    console.log("Login");
-  }
-}
-
-const user1 = new UserCreator("Will", 3);
-user1.increment();
-```
 
 ## Coding Exercises
 
