@@ -143,5 +143,46 @@ const callback = (messages) => {
 
 executeInSequenceWithCBs(asyncTasks, callback);
 
+Question 3:
+
+const apis = [
+  {
+    apiName: "products",
+    apiUrl: "https://dummyjson.com/products",
+  },
+  {
+    apiName: "users",
+    apiUrl: "https://dummyjson.com/users",
+  },
+  {
+    apiName: "posts",
+    apiUrl: "https://dummyjson.com/posts",
+  },
+  {
+    apiName: "comments",
+    apiUrl: "https://dummyjson.com/comments",
+  },
+];
+const executeInSequenceWithPromises = (apis) => {
+  const promises = apis.map((api) => {
+    return fetch(api.apiUrl)
+      .then((response) => response.json())
+      .then((apiData) => ({
+        apiName: api.apiName,
+        apiUrl: api.apiUrl,
+        apiData: apiData,
+      }));
+  });
+
+  return Promise.all(promises);
+};
+
+executeInSequenceWithPromises(apis)
+  .then((results) => {
+    console.log(results);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 ```
