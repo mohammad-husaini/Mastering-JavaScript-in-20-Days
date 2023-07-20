@@ -82,4 +82,188 @@ function outer() {
 outer();
 ```
 ## Coding Exercises
-### [SECTION'S EXERCISES](https://github.com/orjwan-alrajaby/gsg-expressjs-backend-training-2023/blob/main/learning-sprint-1/week3-day2-tasks/tasks.md)
+## STATIC TYPING QUESTIONS:
+### QUESTION #1
+
+Given the following `promisesArray`, convert the array into an object using the
+`convertToObj` function.
+
+You should apply typescript types to every promise, the input of `convertToObj`,
+and the output of `convertToObj`. 
+
+Build interfaces and types as needed.
+
+```typescript
+
+interface HelloWorldType {
+    message: string;
+  }
+  
+  interface CheckBooleanType {
+    booleanValue: boolean;
+  }
+  
+  interface ReturnObjType {
+    x: string;
+    y: number;
+  }
+  
+  const sayHelloWorld: Promise<HelloWorldType> = new Promise(
+    (resolve, reject) => {
+      resolve({ message: "Hello world!" });
+    }
+  );
+  
+  const checkBoolean = (booleanValue: boolean): Promise<CheckBooleanType> =>
+    new Promise((resolve, reject) => {
+      if (booleanValue) {
+        resolve({ booleanValue });
+      } else {
+        reject(`Input is false :(`);
+      }
+    });
+  
+  const returnObj: Promise<ReturnObjType> = new Promise((resolve, reject) => {
+    resolve({ x: "meow", y: 45 });
+  });
+  
+  const promisesArray: [
+    Promise<HelloWorldType>,
+    Promise<CheckBooleanType>,
+    Promise<ReturnObjType>
+  ]  = [sayHelloWorld, checkBoolean(true), returnObj];
+  
+  const convertToObj = (array: [
+    Promise<HelloWorldType>,
+    Promise<CheckBooleanType>,
+    Promise<ReturnObjType>
+  ]) => {
+  
+    return   Object.assign({}, array)
+  };
+  
+
+  console.log(convertToObj(promisesArray))//Output : 
+// {
+//     '0': Promise { { message: 'Hello world!' }},
+//     '1': Promise { { booleanValue: true }},
+//     '2': Promise { { x: 'meow', y: 45 }}
+// }
+
+
+```
+
+-------------------------------------------------------------------
+
+## SCOPE & HOISTING QUESTIONS:
+
+### QUESTION #1:
+
+What will be the output of the following code snippet? Pick the right choice
+then **justify your answer with an explanation**.
+
+```javascript
+function testScope1() {
+  if (true) {
+    var a = 1;
+    let b = 2;
+    const c = 3;
+  }
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+
+testScope1();
+
+```
+**Choices:**
+
+A) `undefined`, `undefined`, `undefined`   
+B) `1`, `undefined`, `ReferenceError`  
+C) `1`, `ReferenceError`, `ReferenceError`   
+`D)` `1`, `ReferenceError`
+
+1. `var a = 1;` has function scope, so `a` will hold the value `1` when logged.
+2. `let b = 2;` and `const c = 3;` have block scope, resulting in ReferenceError when logged outside the block.
+-------------------------------------------------------------------
+
+### QUESTION #2:
+
+What will be the output of the following code snippet? Pick the right choice
+then **justify your answer with an explanation**.
+
+```javascript
+function testScope2() {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  if (true) {
+    var a = 1;
+    let b = 2;
+    const c = 3;
+  }
+}
+
+testScope2();
+
+```
+
+**Choices:**
+
+`A)` `undefined`, `ReferenceError`   
+B) `1`, `undefined`, `ReferenceError`   
+C)`undefined`, `undefined`,
+`ReferenceError`  
+D) `1`, `ReferenceError`
+
+
+1.  In JavaScript, `var` declarations are hoisted to the top of the function, so `a` is hoisted and initialized with `undefined` before being assigned the value `1` inside the block, resulting in `undefined` being printed to the console.
+2. In JavaScript, variables declared with `let` and `const` are not hoisted, and they have block scope. When the `console.log(b)` statement is executed before the `if` block, `b` is accessed before its declaration, leading to a ReferenceError since it is not defined in that scope.
+-------------------------------------------------------------------
+
+### QUESTION #3:
+
+What will be the output of the following code snippet? Pick the right choice
+then **justify your answer with an explanation**.
+
+```javascript
+
+function testScope3() {
+  var a = 36;
+  let b = 100;
+  const c = 45;
+
+  console.log([a, b, c]);
+
+  if (true) {
+    var a = 1;
+    let b = 2;
+    const c = 3;
+
+    console.log([a, b, c]);
+  }
+
+  console.log([a, b, c]);
+}
+
+testScope3();
+
+```
+
+**choices:**
+
+A) `[ 36, 100, 45 ]` | `[ 1, 2, 3 ]` | `[ 36, 2, 3 ]`   
+B) `[ 36, 100, 45 ]` | `[1, 2, 3 ]` | `[ 36, 100, 45 ]`   
+`C)` `[ 36, 100, 45 ]` | `[ 1, 2, 3 ]` | `[ 1,100, 45 ]`   
+D) `[ 36, 100, 45 ]` | `[ 1, 2, 3 ]` | `[ 1, 2, 3 ]`
+
+
+1. The variables `a`, `b`, and `c` are declared using `var`, `let`, and `const` respectively.
+2. After declaring these variables, the first `console.log()` statement outputs `[36, 100, 45]`, which is the initial values of `a`, `b`, and `c`.
+3. Inside the `if (true)` block:
+   - A new block-scoped `b` and `c` are declared and assigned the values `2` and `3`.
+   - The `var a` is redeclared and reassigned the value `1`. However, due to hoisting, it affects the previous `var a` declared outside the block as well.
+   - The second `console.log()` statement outputs `[1, 2, 3]`, which are the new values of `a`, `b`, and `c` inside the block.
+4. After the block, the third `console.log()` statement outputs `[1, 100, 45]`, which is the new value of `a` from the block and the original values of `b` and `c` declared outside the block.
+
