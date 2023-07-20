@@ -44,6 +44,8 @@ To keep my learning materials organized, I will follow the folder structure prov
 - [**Day 8**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day8.md)
 - [**Day 9**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day9.md)
 - [**Day 10**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day10.md)
-
-
+- [**Day 11**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day11.md)
+- [**Day 12**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day12.md)
+- [**Day 13**](https://github.com/mohammad-husaini/Mastering-JavaScript-in-20-Days/blob/main/Day13.md)
+  
 I'm excited to embark on this learning adventure and level up my JavaScript skills! Let's make the most of these 20 days. Happy coding! 🎉
