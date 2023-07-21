@@ -259,6 +259,8 @@ outer1(); // Output: 10
 > **Reasoning for example 1's output:**  
 > .................................................................................
 
+Reasoning: The `outer1` function has a variable `x` with the value `10`. The inner function `inner1`  captures `x` from its outer scope. When `inner1()` is called, it logs the value of `x`, which is `10`.
+
 --------
 
 **Example 2:**
@@ -281,3 +283,4 @@ outer2(); // Output: 20
 > **Reasoning for example 2's output:**  
 > .................................................................................
 
+In `outer2`, we have a variable `x` declared and assigned the value 10. Inside `outer2`, there's an inner function `inner2`, which also declares a variable `x` with a value of 20. However, this inner `x` does not create a new variable; instead, it modifies the existing `x` from its enclosing scope.
